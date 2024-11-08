@@ -6,6 +6,7 @@ import JournalEntries from './components/JournalEntries';
 import AddJournalEntry from './components/AddJournalEntry';
 import AIBot from './components/AIBot';
 import Resources from './components/Resources';
+require('dotenv').config();
 
 const Page = () => {
   const [view, setView] = useState("home"); // Initial view set to "home"
