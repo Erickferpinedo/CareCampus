@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Function to call the OpenAI API
 export async function callOpenAI(prompt) {
-  const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY; // Using NEXT_PUBLIC prefix
+  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
   if (!apiKey) {
     console.error("API Key is missing");
     return 'Error: Missing API key';
@@ -13,7 +12,7 @@ export async function callOpenAI(prompt) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiKey}`, 
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
@@ -48,6 +47,7 @@ const AIBot = () => {
     },
   ]);
 
+  
   async function handleSubmit(e) {
     e.preventDefault();
     if (loading || !query.trim()) return;
